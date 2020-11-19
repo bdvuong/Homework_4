@@ -1,3 +1,4 @@
+import org.junit.Before;
 import org.junit.Test;
 
 import javax.xml.crypto.Data;
@@ -16,12 +17,12 @@ public class Examples {
                  / \   / \
                 10 11 4   6
      */
-    IHeap emptyHeap = new MtHeap();
-    IHeap heapFourEmpty = new DataHeap(4, emptyHeap, emptyHeap);
-    IHeap heapSix = new DataHeap(6, emptyHeap, emptyHeap);
+
+    IHeap heapFourEmpty = new DataHeap(4);
+    IHeap heapSix = new DataHeap(6);
     IHeap heapFour = new DataHeap(4, heapFourEmpty, heapSix);
-    IHeap heapTen = new DataHeap(10, emptyHeap, emptyHeap);
-    IHeap heapEleven = new DataHeap(11, emptyHeap, emptyHeap);
+    IHeap heapTen = new DataHeap(10);
+    IHeap heapEleven = new DataHeap(11);
     IHeap heapEight = new DataHeap(8, heapTen, heapEleven);
     IHeap rootHeap = new DataHeap(2, heapEight, heapFour);
 
@@ -46,8 +47,27 @@ public class Examples {
     IHeap heapFourFour = new DataHeap(4, heapFourEmpty, heapFourEmpty);
     IHeap sameHeap = new DataHeap(4, heapFourFour, heapFourFour);
 
+
+    /*
+    Random Heap I made up
+                     2
+                   /   \
+                  4     4
+                 / \   / \
+                8  11 4   6
+               /
+              10
+     */
+    IHeap edgeLevelTwoRLeft = new DataHeap(4);
+    IHeap edgeLevelTwoRRight = new DataHeap(6);
+    IHeap edgeRightRootHeap = new DataHeap(4,edgeLevelTwoRLeft, edgeLevelTwoRRight);
+    IHeap edgeLevelTwoLLeft = new DataHeap(8, new DataHeap(10), new MtHeap());
+    IHeap edgeLeftRootHeap = new DataHeap(4, edgeLevelTwoLLeft, new DataHeap(11));
+    IHeap edgeCaseRootHeap = new DataHeap(2, edgeLeftRootHeap,edgeRightRootHeap);
+
     public Examples() {
     }
+
 
     @Test
     public void testGoodHeap() {
@@ -77,6 +97,31 @@ public class Examples {
     @Test
     public void countOccurrencesRootHeap4() {
         assertEquals(2, rootHeap.countOccurrences(4));
+    }
+
+    @Test
+    public void countOccurrencesEdgeCase() {
+        assertEquals(3, edgeCaseRootHeap.countOccurrences(4));
+    }
+
+    @Test
+    public void addEltTesterTest1(){
+        assertTrue(HT.addEltTester(rootHeap, 2 , rootHeap.addElt(2)));
+    }
+
+    @Test
+    public void addEltBadHeapTesterTest(){
+        assertFalse(HT.addEltTester(rootHeap, 4, badHeap.addElt(2)));
+    }
+
+    @Test
+    public void addEltTesterReturnABadHeap() {
+        //assertFalse(HT.addEltTester());
+    }
+
+    @Test
+    public void addEltSameHeapTester() {
+
     }
 }
 
