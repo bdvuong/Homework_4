@@ -19,6 +19,7 @@ interface IHeap extends IBinTree {
  // Determine number of occurrences of an element (dev note: can technically just start at a subtree and continue down technically...?)
  int countOccurrences(int num);
 
+
 }
 
 class MtHeap extends MtBT implements IHeap {
@@ -57,6 +58,7 @@ class MtHeap extends MtBT implements IHeap {
  public int countOccurrences(int num) {
   return 0;
  }
+
 }
 
 class DataHeap extends DataBT implements IHeap {
@@ -164,4 +166,5 @@ class DataHeap extends DataBT implements IHeap {
   else
    return 0 + this.right.countOccurrences(num) + this.left.countOccurrences(num);
  }
+
 }
