@@ -12,12 +12,12 @@ interface IHeap extends IBinTree {
  
  // Determine if the root of this heap is bigger than the given element
  boolean isBigger(int e);
- 
+
  // Determine if a given heap is a heap
  boolean isHeap();
 
  // Determine number of occurrences of an element (dev note: can technically just start at a subtree and continue down technically...?)
-
+ int countOccurrences(int num);
 
 }
 
@@ -49,15 +49,14 @@ class MtHeap extends MtBT implements IHeap {
  }
 
  @Override
- public int height() {
-  return 0;
- }
-
- @Override
  public boolean isHeap() {
   return true;
  }
 
+ @Override
+ public int countOccurrences(int num) {
+  return 0;
+ }
 }
 
 class DataHeap extends DataBT implements IHeap {
@@ -155,5 +154,14 @@ class DataHeap extends DataBT implements IHeap {
  @Override
  public boolean isHeap() {
   return this.left.isBigger(this.data) && this.right.isBigger(this.data) && this.left.isHeap() && this.right.isHeap();
+ }
+
+ @Override
+ public int countOccurrences(int num) {
+  if(num == this.data) {
+   return 1 + this.right.countOccurrences(num) + this.left.countOccurrences(num);
+  }
+  else
+   return 0 + this.right.countOccurrences(num) + this.left.countOccurrences(num);
  }
 }
