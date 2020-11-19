@@ -64,5 +64,19 @@ public class Examples {
         assertTrue(sameHeap.isHeap());
     }
 
+    @Test
+    public void countOccurrencesSameHeap4() {
+        assertEquals(7, sameHeap.countOccurrences(4));
+    }
+
+    @Test
+    public void countOccurrencesSameHeap0() {
+        assertEquals(0, sameHeap.countOccurrences(0));
+    }
+
+    @Test
+    public void countOccurrencesRootHeap4() {
+        assertEquals(2, rootHeap.countOccurrences(4));
+    }
 }
 
