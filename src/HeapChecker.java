@@ -1,3 +1,5 @@
+import java.util.HashSet;
+
 public class HeapChecker {
 
     public HeapChecker(){}
@@ -22,7 +24,25 @@ public class HeapChecker {
         return false;
     }
 
-
+    boolean remMinEltTester(IHeap hOrig, IBinTree hRemoved) {
+        if(hOrig.isHeap() && hRemoved.isHeap()) {
+            for(int i : hOrig.createElementsList()) {
+                if(i == hOrig.createElementsList().iterator().next()) {
+                    if(hOrig.countOccurrences(i) - 1 == hRemoved.countOccurrences(i)) {
+                        continue;
+                    }
+                }
+                else if(hOrig.countOccurrences(i) == hRemoved.countOccurrences(i)) {
+                    continue;
+                }
+                else {
+                    return false;
+                }
+            }
+            return true;
+        }
+        return false;
+    }
 
 
 }

@@ -57,4 +57,8 @@ class DataBT implements IBinTree {
     public boolean isHeap() {
         return this.left.isBigger(this.data) && this.right.isBigger(this.data) && this.left.isHeap() && this.right.isHeap();
     }
+
+    public int rootNum() {
+        return this.data;
+    }
 }

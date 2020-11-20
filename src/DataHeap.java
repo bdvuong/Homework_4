@@ -116,4 +116,9 @@ class DataHeap extends DataBT implements IHeap {
         returnList.addAll(this.right.createElementsList());
         return returnList;
     }
+
+    @Override
+    public int rootNum() {
+        return this.data;
+    }
 }

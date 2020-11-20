@@ -31,6 +31,7 @@ class MtBT implements IBinTree {
     public HashSet<Integer> createElementsList() {
         return null;
     }
+
     public boolean isHeap() {
         return true;
     }

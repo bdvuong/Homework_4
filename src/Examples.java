@@ -1,8 +1,6 @@
 import org.junit.Before;
 import org.junit.Test;
 
-import javax.xml.crypto.Data;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -53,7 +51,7 @@ public class Examples {
 
 
     /*
-    Random Heap I made up
+    Heap with 3 of the same values but in different subheaps
                      2
                    /   \
                   4     4
@@ -68,6 +66,19 @@ public class Examples {
     IHeap edgeLevelTwoLLeft = new DataHeap(8, new DataHeap(10), new MtHeap());
     IHeap edgeLeftRootHeap = new DataHeap(4, edgeLevelTwoLLeft, new DataHeap(11));
     IHeap edgeCaseRootHeap = new DataHeap(2, edgeLeftRootHeap,edgeRightRootHeap);
+
+
+     /*
+        First Heap but with the two removed
+                     4
+                   /   \
+                  8     4
+                 / \     \
+                10 11     6
+     */
+
+    IHeap heapFourRemoved = new DataHeap(4, new MtHeap(), heapSix);
+    IHeap rootHeapRemoved = new DataHeap(4, heapEight, heapFourRemoved);
 
     public Examples() {
     }
@@ -109,16 +120,6 @@ public class Examples {
     }
 
     @Test
-    public void addEltTesterTest1(){
-        assertTrue(HT.addEltTester(rootHeap, 2 , rootHeap.addElt(2)));
-    }
-
-    @Test
-    public void addEltBadHeapTesterTest(){
-        assertFalse(HT.addEltTester(rootHeap, 4, badHeap.addElt(2)));
-    }
-
-    @Test
     public void addEltsToListRootHeap1() {
         HashSet<Integer> expectedResult = new HashSet<>();
         expectedResult.add(2);
@@ -129,14 +130,31 @@ public class Examples {
         expectedResult.add(6);
         assertEquals(expectedResult, rootHeap.createElementsList());
     }
+
+    @Test
+    public void addEltTesterTestHeap1(){
+        assertTrue(HT.addEltTester(rootHeap, 2 , rootHeap.addElt(2)));
+    }
+
+    @Test
+    public void addEltBadHeapTesterTest(){
+        assertFalse(HT.addEltTester(rootHeap, 4, badHeap.addElt(2)));
+    }
     @Test
     public void addEltTesterReturnABadHeap() {
-        //assertFalse(HT.addEltTester());
+        assertFalse(HT.addEltTester(rootHeap, 10, badHeap.addElt(10)));
     }
 
     @Test
     public void addEltSameHeapTester() {
 
     }
+
+    @Test
+    public void remMinNumFromRootHeapTester() {
+        assertTrue(HT.remMinEltTester(rootHeap, rootHeapRemoved));
+    }
+
+
 }
 
