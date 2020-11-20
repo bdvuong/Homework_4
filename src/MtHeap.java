@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.HashSet;
 
 class MtHeap extends MtBT implements IHeap {

@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Random;
 
@@ -117,8 +116,5 @@ class DataHeap extends DataBT implements IHeap {
         return returnList;
     }
 
-    @Override
-    public int rootNum() {
-        return this.data;
-    }
+
 }

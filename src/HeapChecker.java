@@ -1,5 +1,3 @@
-import java.util.HashSet;
-
 public class HeapChecker {
 
     public HeapChecker(){}

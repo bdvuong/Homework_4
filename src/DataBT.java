@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.HashSet;
 
 class DataBT implements IBinTree {
@@ -58,7 +57,4 @@ class DataBT implements IBinTree {
         return this.left.isBigger(this.data) && this.right.isBigger(this.data) && this.left.isHeap() && this.right.isHeap();
     }
 
-    public int rootNum() {
-        return this.data;
-    }
 }
