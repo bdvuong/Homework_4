@@ -1,3 +1,7 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+
 class MtBT implements IBinTree {
     MtBT(){}
 
@@ -23,6 +27,9 @@ class MtBT implements IBinTree {
     // returns 0 because an empty heap contains no elements
     public int countOccurrences(int num) {
         return 0;
+    }
+    public HashSet<Integer> createElementsList() {
+        return null;
     }
     public boolean isHeap() {
         return true;

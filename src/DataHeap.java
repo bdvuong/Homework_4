@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Random;
 
 class DataHeap extends DataBT implements IHeap {
@@ -103,7 +105,15 @@ class DataHeap extends DataBT implements IHeap {
             return 1 + this.right.countOccurrences(num) + this.left.countOccurrences(num);
         }
         else
-            return 0 + this.right.countOccurrences(num) + this.left.countOccurrences(num);
+            return this.right.countOccurrences(num) + this.left.countOccurrences(num);
     }
 
+    @Override
+    public HashSet<Integer> createElementsList() {
+        HashSet<Integer> returnList = new HashSet<>();
+        returnList.add(this.data);
+        returnList.addAll(this.left.createElementsList());
+        returnList.addAll(this.right.createElementsList());
+        return returnList;
+    }
 }

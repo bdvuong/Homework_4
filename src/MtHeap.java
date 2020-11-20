@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.HashSet;
+
 class MtHeap extends MtBT implements IHeap {
     MtHeap(){}
 
@@ -28,6 +31,11 @@ class MtHeap extends MtBT implements IHeap {
     @Override
     public boolean isHeap() {
         return true;
+    }
+
+    @Override
+    public HashSet<Integer> createElementsList() {
+        return new HashSet<>();
     }
 
     @Override

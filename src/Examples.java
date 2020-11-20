@@ -3,6 +3,10 @@ import org.junit.Test;
 
 import javax.xml.crypto.Data;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+
 import static org.junit.Assert.*;
 
 public class Examples {
@@ -114,6 +118,17 @@ public class Examples {
         assertFalse(HT.addEltTester(rootHeap, 4, badHeap.addElt(2)));
     }
 
+    @Test
+    public void addEltsToListRootHeap1() {
+        HashSet<Integer> expectedResult = new HashSet<>();
+        expectedResult.add(2);
+        expectedResult.add(8);
+        expectedResult.add(10);
+        expectedResult.add(11);
+        expectedResult.add(4);
+        expectedResult.add(6);
+        assertEquals(expectedResult, rootHeap.createElementsList());
+    }
     @Test
     public void addEltTesterReturnABadHeap() {
         //assertFalse(HT.addEltTester());
